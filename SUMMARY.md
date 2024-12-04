@@ -1,7 +1,6 @@
 # Table of contents
 
-* [Untitled](README.md)
-  * [Welcome to Kyronode](untitled/welcome-to-kyronode.md)
+* [Welcome to Kyronode](README.md)
 * [Testnet](testnet/README.md)
   * [Zenrock](testnet/readme.md)
   * [Initia](testnet/initia/README.md)
