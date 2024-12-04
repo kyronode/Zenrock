@@ -1,4 +1,8 @@
-# GitHub: Simple tutorial to run Initia node
+---
+icon: arrows-to-circle
+---
+
+# Initia
 
 ```
 sudo apt update && sudo apt upgrade -y

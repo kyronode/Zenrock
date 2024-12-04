@@ -1,8 +1,12 @@
+---
+icon: face-awesome
+---
+
 # Welcome to Kyronode
 
 ### Kyronode
 
-[![Kyronode](<../.gitbook/assets/Kyronode (1).png>)](../.gitbook/assets/Kyronode.png)
+[![Kyronode](<.gitbook/assets/Kyronode (1).png>)](.gitbook/assets/Kyronode.png)
 
 ### **Welcome to Our Blockchain Journey 🚀**
 
