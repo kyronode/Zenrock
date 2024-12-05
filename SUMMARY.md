@@ -2,7 +2,8 @@
 
 * [Welcome to Kyronode](README.md)
 * [Testnet](testnet/README.md)
-  * [Zenrock](testnet/readme.md)
-  * [Initia](testnet/initia.md)
+  * [Fiamma](testnet/fiamma.md)
   * [Pryzm](testnet/pryzm.md)
+  * [Zenrock](testnet/zenrock.md)
+  * [Initia](testnet/initia.md)
 * [Explorer](explorer.md)
