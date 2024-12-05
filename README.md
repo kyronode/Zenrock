@@ -6,7 +6,7 @@ icon: face-awesome
 
 ### Kyronode
 
-[![Kyronode](<.gitbook/assets/Kyronode (1).png>)](.gitbook/assets/Kyronode.png)
+<figure><img src=".gitbook/assets/20241205_230610.png" alt=""><figcaption></figcaption></figure>
 
 ### **Welcome to Our Blockchain Journey 🚀**
 
