@@ -186,6 +186,10 @@ sudo journalctl -u fiammad -f
 
 Create a new wallet:
 
+```
+fiammad keys add $WALLET
+```
+
 Restore an existing wallet:
 
 ```
@@ -207,6 +211,10 @@ source $HOME/.bash_profile
 ### 10. Check Node Sync Status
 
 Check the sync status:
+
+```
+fiammad status 2>&1 | jq
+```
 
 ***
 
