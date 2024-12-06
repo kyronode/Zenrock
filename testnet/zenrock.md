@@ -251,4 +251,3 @@ zenrockd tx staking create-validator \
 
 ### DONE
 
-Thanks to: [NodeX9](https://node9x.com/)
