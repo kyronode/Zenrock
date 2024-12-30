@@ -6,4 +6,4 @@ description: >-
 
 # Explorer
 
-[**Kyro-Explorer**](https://explorer-testnet-kyronode.vercel.app/)
+[**Kyro-Explorer**](https://testnet.kyronode.xyz/)
