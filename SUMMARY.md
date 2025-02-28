@@ -11,4 +11,6 @@
   * [Zenrock](testnet/zenrock.md)
   * [Pryzm](testnet/pryzm.md)
   * [Pell](testnet/pell.md)
+  * [Swisstronik](testnet/swisstronik.md)
+  * [0g](testnet/0g.md)
 * [Explorer](explorer.md)
