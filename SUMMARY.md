@@ -6,7 +6,7 @@
   * [Pryzm](testnet/pryzm.md)
   * [Zenrock](testnet/zenrock.md)
   * [Initia](testnet/initia.md)
-  * [DILL](testnet/dill.md)
+  * [Dill](testnet/dill.md)
   * [Warden](testnet/warden.md)
   * [Union](testnet/union.md)
 * [Explorer](explorer.md)
