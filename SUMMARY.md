@@ -6,4 +6,5 @@
   * [Pryzm](testnet/pryzm.md)
   * [Zenrock](testnet/zenrock.md)
   * [Initia](testnet/initia.md)
+  * [DILL](testnet/dill.md)
 * [Explorer](explorer.md)
