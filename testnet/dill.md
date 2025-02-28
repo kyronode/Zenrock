@@ -1,5 +1,6 @@
 ---
 description: Dill node guides
+icon: arrows-to-circle
 ---
 
 # DILL
