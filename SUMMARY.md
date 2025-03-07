@@ -12,6 +12,6 @@
   * [Pryzm](testnet/pryzm.md)
   * [Pell](testnet/pell.md)
   * [Swisstronik](testnet/swisstronik.md)
-  * [0g](testnet/0g/README.md)
-    * [KiiChain](testnet/0g/kiichain.md)
+  * [0g](testnet/0g.md)
+  * [KiiChain](testnet/kiichain.md)
 * [Explorer](explorer.md)
