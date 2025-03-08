@@ -1,6 +1,6 @@
 ---
-description: KiiChain node guide documentation
 icon: arrows-to-circle
+description: KiiChain node guide documentation
 ---
 
 # KiiChain
@@ -23,7 +23,7 @@ This guide walks you through the process of setting up a Kiichain validator node
 Clone the repository and build the binary:
 
 ```bash
-bashCopyEditgit clone https://github.com/KiiChain/kiichain.git
+git clone https://github.com/KiiChain/kiichain.git
 cd kiichain
 make install
 ```
@@ -31,7 +31,7 @@ make install
 Verify the installation:
 
 ```bash
-bashCopyEditkiichaind version
+kiichaind version
 ```
 
 ***
@@ -43,7 +43,7 @@ You have two options to bootstrap your node:
 #### a. Standard Full Node
 
 ```bash
-bashCopyEditcurl -O https://raw.githubusercontent.com/KiiChain/testnets/refs/heads/main/testnet_oro/join_oro.sh
+curl -O https://raw.githubusercontent.com/KiiChain/testnets/refs/heads/main/testnet_oro/join_oro.sh
 chmod +x join_oro.sh
 ./join_oro.sh
 ```
@@ -51,7 +51,7 @@ chmod +x join_oro.sh
 #### b. Node with Cosmovisor (Recommended)
 
 ```bash
-bashCopyEditcurl -O https://raw.githubusercontent.com/KiiChain/testnets/refs/heads/main/testnet_oro/join_oro_cv.sh
+curl -O https://raw.githubusercontent.com/KiiChain/testnets/refs/heads/main/testnet_oro/join_oro_cv.sh
 chmod +x join_oro_cv.sh
 ./join_oro_cv.sh
 ```
@@ -63,7 +63,7 @@ chmod +x join_oro_cv.sh
 #### a. Backup and Clean Existing Configurations
 
 ```bash
-bashCopyEdit# Backup old configuration (if any)
+# Backup old configuration (if any)
 cp -r $HOME/.kiichain3 $HOME/.kiichain3-bk
 # Remove old configuration
 rm -r $HOME/.kiichain3
@@ -72,7 +72,7 @@ rm -r $HOME/.kiichain3
 #### b. Set Environment Variables
 
 ```bash
-bashCopyEditPERSISTENT_PEERS="5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656,5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:26656"
+PERSISTENT_PEERS="5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656,5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:26656"
 CHAIN_ID=kiichain3
 NODE_HOME=$HOME/.kiichain3
 NODE_MONIKER=testnet_oro
@@ -82,19 +82,19 @@ GENESIS_URL=https://raw.githubusercontent.com/KiiChain/testnets/refs/heads/main/
 #### c. Initialize the Node
 
 ```bash
-bashCopyEditkiichaind init $NODE_MONIKER --chain-id $CHAIN_ID --home $NODE_HOME
+kiichaind init $NODE_MONIKER --chain-id $CHAIN_ID --home $NODE_HOME
 ```
 
 #### d. Set Persistent Peers
 
 ```bash
-bashCopyEditsed -i -e "/persistent-peers =/ s^= .*^= \"$PERSISTENT_PEERS\"^" $NODE_HOME/config/config.toml
+sed -i -e "/persistent-peers =/ s^= .*^= \"$PERSISTENT_PEERS\"^" $NODE_HOME/config/config.toml
 ```
 
 #### e. Enable Database Features and Increase Concurrency
 
 ```bash
-bashCopyEditsed -i.bak -e "s|^occ-enabled *=.*|occ-enabled = true|" $NODE_HOME/config/app.toml
+sed -i.bak -e "s|^occ-enabled *=.*|occ-enabled = true|" $NODE_HOME/config/app.toml
 sed -i.bak -e "s|^sc-enable *=.*|sc-enable = true|" $NODE_HOME/config/app.toml
 sed -i.bak -e "s|^ss-enable *=.*|ss-enable = true|" $NODE_HOME/config/app.toml
 sed -i.bak -e 's/^# concurrency-workers = 20$/concurrency-workers = 500/' $NODE_HOME/config/app.toml
@@ -103,14 +103,14 @@ sed -i.bak -e 's/^# concurrency-workers = 20$/concurrency-workers = 500/' $NODE_
 #### f. Download and Set the Genesis File
 
 ```bash
-bashCopyEditwget $GENESIS_URL -O genesis.json
+wget $GENESIS_URL -O genesis.json
 mv genesis.json $NODE_HOME/config/genesis.json
 ```
 
 (Optional) Verify the genesis file's SHA256 checksum:
 
 ```bash
-bashCopyEditsha256sum $NODE_HOME/config/genesis.json
+sha256sum $NODE_HOME/config/genesis.json
 ```
 
 _Expected SHA256:_ `e22442f19149db7658bcf777d086b52b38d834ea17010c313cd8aece137b647a`
@@ -122,7 +122,7 @@ _Expected SHA256:_ `e22442f19149db7658bcf777d086b52b38d834ea17010c313cd8aece137b
 Change the node mode from full node to validator:
 
 ```bash
-bashCopyEditsed -i 's/mode = "full"/mode = "validator"/g' $NODE_HOME/config/config.toml
+sed -i 's/mode = "full"/mode = "validator"/g' $NODE_HOME/config/config.toml
 ```
 
 ***
@@ -134,7 +134,7 @@ State sync speeds up synchronization by downloading recent state data.
 #### a. Determine Sync Block Height
 
 ```bash
-bashCopyEditTRUST_HEIGHT_DELTA=500
+TRUST_HEIGHT_DELTA=500
 LATEST_HEIGHT=$(curl -s https://rpc.uno.sentry.testnet.v3.kiivalidator.com/block | jq -r ".block.header.height")
 if [[ "$LATEST_HEIGHT" -gt "$TRUST_HEIGHT_DELTA" ]]; then
   SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - $TRUST_HEIGHT_DELTA))
@@ -146,13 +146,13 @@ fi
 #### b. Get the Sync Block Hash
 
 ```bash
-bashCopyEditSYNC_BLOCK_HASH=$(curl -s "https://rpc.uno.sentry.testnet.v3.kiivalidator.com/block?height=$SYNC_BLOCK_HEIGHT" | jq -r ".block_id.hash")
+SYNC_BLOCK_HASH=$(curl -s "https://rpc.uno.sentry.testnet.v3.kiivalidator.com/block?height=$SYNC_BLOCK_HEIGHT" | jq -r ".block_id.hash")
 ```
 
 #### c. Update the `config.toml` for State Sync
 
 ```bash
-bashCopyEditsed -i.bak -e "s|^enable *=.*|enable = true|" $NODE_HOME/config/config.toml
+sed -i.bak -e "s|^enable *=.*|enable = true|" $NODE_HOME/config/config.toml
 sed -i.bak -e "s|^rpc-servers *=.*|rpc-servers = \"https://rpc.uno.sentry.testnet.v3.kiivalidator.com,https://rpc.dos.sentry.testnet.v3.kiivalidator.com\"|" $NODE_HOME/config/config.toml
 sed -i.bak -e "s|^db-sync-enable *=.*|db-sync-enable = false|" $NODE_HOME/config/config.toml
 sed -i.bak -e "s|^trust-height *=.*|trust-height = $SYNC_BLOCK_HEIGHT|" $NODE_HOME/config/config.toml
@@ -166,7 +166,7 @@ sed -i.bak -e "s|^trust-hash *=.*|trust-hash = \"$SYNC_BLOCK_HASH\"|" $NODE_HOME
 Run your Kiichain node:
 
 ```bash
-bashCopyEditkiichaind start --home $NODE_HOME
+kiichaind start --home $NODE_HOME
 ```
 
 ***
@@ -178,7 +178,7 @@ bashCopyEditkiichaind start --home $NODE_HOME
 Generate a key for transactions:
 
 ```bash
-bashCopyEditkiichaind keys add $VALIDATOR_KEY_NAME
+kiichaind keys add $VALIDATOR_KEY_NAME
 ```
 
 _Keep the mnemonic safe—it is required for account recovery._
@@ -186,7 +186,7 @@ _Keep the mnemonic safe—it is required for account recovery._
 #### b. Get Your Validator Public Key
 
 ```bash
-bashCopyEditkiichaind tendermint show-validator
+kiichaind tendermint show-validator
 ```
 
 #### c. Create the Validator
@@ -194,7 +194,7 @@ bashCopyEditkiichaind tendermint show-validator
 Replace `<your-moniker>` and `$VALIDATOR_KEY_NAME` with your values:
 
 ```bash
-bashCopyEditCHAIN_ID=kiichain3
+CHAIN_ID=kiichain3
 MONIKER=<your-moniker>
 AMOUNT=1000000000ukii   # 1000 kii for self-delegation
 COMMISSION_MAX_CHANGE_RATE=0.1
@@ -226,7 +226,7 @@ This transaction must be sent from the machine running your node.
 If you wish to save all historical states, update the pruning setting in `$NODE_HOME/config/config.toml`:
 
 ```toml
-tomlCopyEditpruning = "nothing"
+pruning = "nothing"
 ```
 
 Other pruning options include `default`, `everything`, and `custom`.
@@ -243,12 +243,12 @@ Cosmovisor is used to manage automatic chain upgrades. The cosmovisor bootstrap 
 2.  **Verify the binary version:**
 
     ```bash
-    bashCopyEditkiichaind version
+    kiichaind version
     ```
 3.  **Add the upgrade:**
 
     ```bash
-    bashCopyEditcosmovisor add-upgrade <upgrade-name> <path-to-binary>
+    cosmovisor add-upgrade <upgrade-name> <path-to-binary>
     ```
 
     * `<upgrade-name>`: The on-chain upgrade name.
