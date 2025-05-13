@@ -1,5 +1,6 @@
 ---
 description: Lumera Installation Guide
+icon: arrows-to-circle
 ---
 
 # Lumera
