@@ -141,6 +141,13 @@ sudo systemctl start lumerad
 
 ***
 
+9. Check Node Sync
+
+```bash
+#Paste this to your terminal
+bash <(curl -s https://raw.githubusercontent.com/kyronode/Lumera/main/lumera-sync.sh)
+```
+
 ***
 
 ### Useful Commands
