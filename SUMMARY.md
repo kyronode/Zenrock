@@ -2,6 +2,7 @@
 
 * [Welcome to Kyronode](README.md)
 * [Testnet](testnet/README.md)
+  * [Lumera](testnet/lumera.md)
   * [Union](testnet/union.md)
   * [Initia](testnet/initia.md)
   * [Warden](testnet/warden.md)
