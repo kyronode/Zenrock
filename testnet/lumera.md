@@ -33,15 +33,11 @@ go version
 
 ***
 
-### 2. Download and Install Lumera Binary
+### 2. Download Lumera Binary
 
 ```bash
 wget https://github.com/LumeraProtocol/lumera/releases/download/v0.4.1/lumera_v0.4.1_linux_amd64.tar.gz
 tar -xvzf lumera_v0.4.1_linux_amd64.tar.gz
-chmod +x install.sh
-sudo ./install.sh
-chmod +x ./lumerad
-lumerad version
 ```
 
 ***
